@@ -3,16 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-quasar-ui"],
   quasar: {
+    sassVariables: "./assets/scss/settings.scss",
     /* */
-  },
-
-  vite: {
-    css: {
-      preprocessorOptions: {
-          scss: {
-              additionalData: '@import "@/assets/scss/settings.scss";',
-          },
-      },
-    },
   },
 });
