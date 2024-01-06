@@ -3,17 +3,19 @@
     <Header />
     <div class="main-layout flex column">
       <Container>
-        <NuxtPage />
+        <NuxtPage :drinks="drinks" />
       </Container>
       <Footer />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-export default {
+<script lang="ts" setup>
+import { defineNuxtComponent } from 'nuxt/app';
+const { drinks, pagination } = await useDrinksFetch();
+defineNuxtComponent({
   name: "default",
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +25,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 .bg-page {
   background-color: #f3f9fe;

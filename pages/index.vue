@@ -1,17 +1,27 @@
 <template>
-    <div class="q-my-lg flex justify-center" style="gap: 20px">
-      <DrinkCard v-for="i in 15" :key="i" />
-    </div>
+  <div class="q-my-lg flex justify-center" style="gap: 20px">
+    <!-- <DrinkCard v-for="i in 8" :key="i" /> -->
+    <DrinkCard :drink="drink" v-for="drink in drinks" :key="drink.id" />
+  </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: "Index",
+export interface IDrink {
+  id: number;
+  name: string;
+  instructions: string;
+  image: string;
+  category: string;
+  created_at: string;
+  updated_at: string;
+}
 
-  data() {
-    return {};
+export default defineNuxtComponent({
+  name: "Index",
+  props: {
+    drinks: Array as PropType<IDrink[]>,
   },
-};
+});
 </script>
 
 <style lang="scss">
