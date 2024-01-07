@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   components: [{ path: "@/components", pathPrefix: false }],
   quasar: {
     sassVariables: "./assets/scss/settings.scss",
+    plugins: ["Notify", "Loading", "Dialog", "LocalStorage"],
     /* */
   },
   runtimeConfig: {

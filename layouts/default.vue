@@ -1,6 +1,6 @@
 <template>
   <div class="bg-page">
-    <Header />
+    <Header @search="handleSearch($event)" />
     <div class="main-layout flex column">
       <Container>
         <NuxtPage :drinks="drinks" />
@@ -11,10 +11,11 @@
 </template>
 
 <script lang="ts" setup>
-import { defineNuxtComponent } from 'nuxt/app';
+import { defineNuxtComponent } from "nuxt/app";
 const { drinks, pagination } = await useDrinksFetch();
 defineNuxtComponent({
   name: "default",
+  
 });
 </script>
 

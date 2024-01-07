@@ -8,7 +8,7 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .container {
   margin: 0 auto;
   max-width: 1070px;

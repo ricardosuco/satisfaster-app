@@ -7,6 +7,7 @@
       <q-input
         class="bg-white"
         color="primary"
+        @keydown.enter="$emit('handleSearch', drinkName)"
         v-model="drinkName"
         debounce="500"
         clearable
@@ -15,19 +16,32 @@
         outlined
       >
         <template v-slot:append>
-          <q-btn icon="search" flat />
+          <q-btn @click="$emit('handleSearch', drinkName)" icon="search" flat />
         </template>
       </q-input>
     </div>
     <div class="col-xs-12 col-md-auto">
-      <q-btn
+      <q-btn-dropdown
         class="text-bold"
-        label="Drinks favoritos"
-        icon-right="favorite"
-        no-caps
+        label="Categorias"
         color="secondary"
         unlevated
-      />
+        no-caps
+      >
+        <q-list>
+          <q-item
+            v-for="(category, index) in categories"
+            :key="index"
+            @click="$emit('handleSearch', category)"
+            clickable
+            v-close-popup
+          >
+            <q-item-section>
+              <q-item-label>{{ category }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-btn-dropdown>
     </div>
   </div>
 </template>
@@ -38,6 +52,19 @@ export default defineComponent({
   data() {
     return {
       drinkName: "",
+      categories: [
+        "Ordinary Drink",
+        "Cocktail",
+        "Milk / Float / Shake",
+        "Other/Unknown",
+        "Cocoa",
+        "Shot",
+        "Coffee / Tea",
+        "Homemade Liqueur",
+        "Punch / Party Drink",
+        "Beer",
+        "Soft Drink / Soda",
+      ] as string[],
     };
   },
 });
