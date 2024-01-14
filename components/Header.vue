@@ -1,26 +1,49 @@
 <template>
-  <div class="row flex items-center justify-between header bg-primary">
-    <div class="col-xs-12 col-sm-2 col-md-auto">
+  <div
+    class="row flex items-center header bg-primary"
+    :class="$q.screen.gt.sm ? 'justify-between' : 'justify-center'"
+  >
+    <div class="col-xs-auto col-md-auto">
       <span class="text-white">Satisfaster</span>
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        class="bg-white"
-        color="primary"
-        @keydown.enter="$emit('handleSearch', drinkName)"
-        v-model="drinkName"
-        debounce="500"
-        clearable
-        dense
-        square
-        outlined
-      >
-        <template v-slot:append>
-          <q-btn @click="$emit('handleSearch', drinkName)" icon="search" flat />
-        </template>
-      </q-input>
+    <div class="row q-col-gutter-md flex items-center col-xs-12 col-md-4">
+      <div class="col-xs-9 col-md-10">
+        <q-input
+          class="bg-white"
+          color="primary"
+          @keydown.enter="$emit('search', filter)"
+          v-model="filter.name"
+          debounce="200"
+          clearable
+          dense
+          square
+          outlined
+        >
+          <template v-slot:append>
+            <q-btn @click="$emit('search', filter)" icon="search" flat />
+          </template>
+        </q-input>
+      </div>
+      <div class="col-xs-3 col-md-5" v-if="$q.screen.lt.md">
+        <q-btn-dropdown color="white" dropdown-icon="menu" size="18px" outline>
+          <q-tooltip>Categorias</q-tooltip>
+          <q-list>
+          <q-item
+            v-for="(category, index) in categories"
+            :key="index"
+            @click="$emit('search', { ...filter, category })"
+            clickable
+            v-close-popup
+          >
+            <q-item-section>
+              <q-item-label>{{ category }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+        </q-btn-dropdown>
+      </div>
     </div>
-    <div class="col-xs-12 col-md-auto">
+    <div v-if="$q.screen.gt.sm" class="col-xs-12 col-md-auto">
       <q-btn-dropdown
         class="text-bold"
         label="Categorias"
@@ -32,7 +55,7 @@
           <q-item
             v-for="(category, index) in categories"
             :key="index"
-            @click="$emit('handleSearch', category)"
+            @click="$emit('search', { ...filter, category })"
             clickable
             v-close-popup
           >
@@ -51,7 +74,10 @@ import { defineComponent } from "vue";
 export default defineComponent({
   data() {
     return {
-      drinkName: "",
+      filter: {
+        name: "",
+        category: "",
+      },
       categories: [
         "Ordinary Drink",
         "Cocktail",
@@ -73,7 +99,7 @@ export default defineComponent({
 <style scoped>
 .header {
   font-size: 42px;
-  height: 100px;
+  height: 140px;
   padding: 0 3rem;
 }
 </style>

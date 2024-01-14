@@ -2,10 +2,22 @@
   <q-card class="drink-card border-radius" bordered flat>
     <img :src="drink?.image" />
     <q-card-section class="flex column items-center">
+      <div class="flex column items-center">
+        <span class="text-bold text-primary">{{ drink?.name }}</span>
+      </div>
+    </q-card-section>
+    <q-separator />
+    <q-card-actions align="right">
+      <q-btn
+        @click="showDrink(drink)"
+        class="text-bold"
+        label="Visualizar detalhes"
+        text-color="accent"
+        no-caps
+        flat
+      />
       <q-btn
         @click="handleFavorite(drink)"
-        class="absolute"
-        style="top: 3px; right: 1px"
         :icon="isFavorite(drink?.id) ? 'favorite' : 'favorite_outline'"
         color="secondary"
         round
@@ -17,20 +29,6 @@
             : "Adicionar aos favoritos"
         }}</q-tooltip>
       </q-btn>
-      <div class="flex column items-center">
-        <span class="text-bold text-primary">{{ drink?.name }}</span>
-      </div>
-    </q-card-section>
-    <q-separator />
-    <q-card-actions vertical>
-      <q-btn
-        @click="showDrink(drink)"
-        class="text-bold"
-        label="Visualizar detalhes"
-        text-color="accent"
-        no-caps
-        flat
-      />
     </q-card-actions>
   </q-card>
   <q-dialog v-model="showDialog">

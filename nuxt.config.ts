@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const isDevelopment = process.env.NODE_ENV !== "production";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-quasar-ui"],
@@ -11,7 +10,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      // BASE_URL: "some fallback value",
+      baseURL: process.env.BASE_URL,
     },
   },
+  ssr: false,
 });
