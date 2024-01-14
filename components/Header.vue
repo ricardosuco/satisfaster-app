@@ -7,13 +7,14 @@
       <span class="text-white">Satisfaster</span>
     </div>
     <div class="row q-col-gutter-md flex items-center col-xs-12 col-md-4">
-      <div class="col-xs-9 col-md-10">
+      <div class="col-xs-11 col-md-10">
         <q-input
           class="bg-white"
           color="primary"
           @keydown.enter="$emit('search', filter)"
           v-model="filter.name"
-          debounce="200"
+          placeholder="Busque por um drink"
+          debounce="50"
           clearable
           dense
           square
@@ -24,7 +25,7 @@
           </template>
         </q-input>
       </div>
-      <div class="col-xs-3 col-md-5" v-if="$q.screen.lt.md">
+      <div class="col-xs-1 col-md-5" v-if="$q.screen.lt.md">
         <q-btn-dropdown color="white" dropdown-icon="menu" size="18px" outline>
           <q-tooltip>Categorias</q-tooltip>
           <q-list>
@@ -90,7 +91,7 @@ export default defineComponent({
         "Punch / Party Drink",
         "Beer",
         "Soft Drink / Soda",
-      ] as string[],
+      ],
     };
   },
 });
