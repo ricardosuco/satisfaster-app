@@ -1,17 +1,23 @@
 <template>
   <div class="bg-page">
-    <Header @search="fetchData($event)" />
+    <Header @search="handleSearch($event)" />
     <div class="main-layout flex column">
       <Container>
         <q-infinite-scroll @load="onLoad" :offset="250">
-          <NuxtPage :drinks="drinks" />
+          <NuxtPage :drinks="drinks" :noDrinks="noDrinks" />
           <template v-slot:loading>
-          {{ this.drinks.length + 1, this.pagination?.total }}
             <div class="row justify-center q-my-md">
-              <q-spinner-dots v-show="showSpinner" color="primary" size="40px" />
+              <q-spinner-dots
+                v-show="showSpinner"
+                color="primary"
+                size="40px"
+              />
             </div>
           </template>
         </q-infinite-scroll>
+        {{ pagination.total }}
+        {{ drinks.length }}
+        {{ showSpinner }}
       </Container>
       <Footer />
     </div>
@@ -27,65 +33,77 @@ export default defineNuxtComponent({
   data() {
     return {
       drinks: [] as PropType<IDrink[]>,
-      pagination: {},
+      pagination: {
+        current_page: null,
+        last_page: null,
+        next_page_url: "/?page=1",
+        total: 0,
+      },
+      filter: {},
       showSpinner: true,
+      noDrinks: false,
     };
   },
 
   computed: {
     page() {
-        return this.pagination?.current_page !== this.pagination?.last_page ? this.pagination?.next_page_url : '/?page=1'
-    }
+      // return this.pagination?.total !== this.drinks.length
+      //   ? `/?page=${this.pagination?.current_page + 1}`
+      //   : `/?page=${this.pagination?.current_page}`;
+
+      if (!this.pagination.current_page && !this.pagination.last_page)
+      return '/?page=1'
+      else if (this.pagination?.total !== this.drinks.length) 
+      return `/?page=${this.pagination?.current_page + 1}`
+      else return `/?page=${this.pagination?.current_page}`
+    },
   },
 
   methods: {
-    async fetchData(filter?: any) {
+    async fetchData(resetPagination = false) {
       try {
-        this.showSpinner = true
+        this.showSpinner = true;
         const query = {};
-        if (filter?.category) {
-          query.category = filter.category;
-        }
-        if (filter?.name) {
-          query.name = filter.name;
+        if (this.filter?.category) query.category = this.filter.category;
+        if (this.filter?.name) query.name = this.filter.name;
+        if (resetPagination) {
+          this.drinks.length = 0
+          this.pagination.total = 0
+          this.pagination.current_page = null
+          this.pagination.last_page = null
+          this.pagination.next_page_url = "/?page=1"
         }
         const { data, error } = await useFetchDrinks(
           `/drinks${this.page}&rowsPerPage=50`,
-          {
-            query,
-          }
+          { query }
         );
-        if (!filter) {
-          return {
-            drinks: toRaw(data.value.data),
-            pagination: toRaw(data.value.meta),
-          };
-        }
-        this.drinks = toRaw(data.value.data);
+        this.drinks.push(...toRaw(data.value.data));
         this.pagination = toRaw(data.value.meta);
       } catch (error) {
-        console.log(error);
+        console.error(error);
+      } finally {
+        this.showSpinner = false;
+        this.drinks.length ? this.noDrinks = false : this.noDrinks = true
       }
     },
 
+    async handleSearch(filter: any) {
+      this.filter = filter;
+      this.drinks = [];
+      await this.fetchData(true);
+    },
+
     async onLoad(index: number, done: () => void) {
-      if (this.drinks.length === this.pagination?.total) {
-        this.showSpinner = false;
-        return
-      }
-      setTimeout(async () => {
-        const { drinks, pagination } = await this.fetchData();
-        this.drinks.push(...drinks);
-        this.pagination = pagination;
-        done();
-      }, 1000);
+      console.log(this.pagination?.next_page_url)
+      if (!this.pagination?.next_page_url) return;
+      if (this.filter?.name || this.filter?.category) await this.fetchData(true);
+      else await this.fetchData();
+      done();
     },
   },
 
   async created() {
-    const { drinks, pagination } = await this.fetchData();
-    this.drinks.push(...drinks);
-    this.pagination = pagination;
+    await this.fetchData();
   },
 });
 </script>
