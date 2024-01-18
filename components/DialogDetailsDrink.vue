@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts">
-import { type IDrink } from "@/models";
-export default defineNuxtComponent({
+import { type IDrink } from "../models";
+export default {
   name: "DialogDetailsDrink",
   props: {
     drink: Object as PropType<IDrink>,
@@ -27,7 +27,7 @@ export default defineNuxtComponent({
   data() {
     return {};
   },
-});
+}
 </script>
 
 <style scoped>
