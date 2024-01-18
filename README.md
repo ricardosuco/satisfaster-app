@@ -1,75 +1,48 @@
-# Nuxt 3 Minimal Starter
+# Satisfaster 🍹
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Descrição 📄
 
-## Setup
+Satisfaster é um sistema em Nuxt que visa exibir uma lista de drinks, consumindo dados a partir da [Satisfeaster-api]().
 
-Make sure to install the dependencies:
+## Funcionalidades ✨
 
-```bash
-# npm
-npm install
+- **Listagem de drinks:** <br>
+  Visualização de todos os drinks disponibilizados pela api
+- **Busca por drinks:** <br>
+  Busca otimizada de drinks, permitindo filtros por categoria ou nome.
+- **Responsividade:** <br>
+  Experiência adaptada para dispositivos móveis e desktop.
+- **Detalhes do drink:** <br>
+  Visualização de detalhes sobre cada drink.
+- **Favoritar:** <br>
+  Seleção de drinks favoritos.
+- **Scroll infinito:** <br>
+  Fetch automática de dados a partir do scroll.
 
-# pnpm
-pnpm install
+## Tecnologias Utilizadas 🚀
 
-# yarn
-yarn install
+- <img src="https://skillicons.dev/icons?i=typescript"> **TypeScript**
+- <img src="https://skillicons.dev/icons?i=vue"> **Vue**
+- <img src="https://skillicons.dev/icons?i=nuxt"> **Nuxt**
 
-# bun
-bun install
-```
+## Como Iniciar 💻
 
-## Development Server
+1. **Clone o Repositório:**
+   ```bash
+   git clone 
+   ```
 
-Start the development server on `http://localhost:3000`:
+2. **Instale as Dependências:**
+   ```bash
+   cd satisfaster
+   npm install
+   ```
 
-```bash
-# npm
-npm run dev
+3. **Execute o Projeto:**
+   ```bash
+   npm run dev
+   ```
 
-# pnpm
-pnpm run dev
+4. **Acesse no navegador:**<br>
+   Abra [http://localhost:3000](http://localhost:3000) para visualizar o projeto em seu navegador.
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
