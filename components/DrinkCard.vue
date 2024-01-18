@@ -1,7 +1,7 @@
 <template>
   <q-card class="drink-card border-radius" bordered flat>
     <q-img v-if="drink.image" :src="drink.image" />
-    <img v-else src="public/placeholderdrink.png" />
+    <img v-else src="/placeholderdrink.png" />
     <q-card-section class="flex column items-center">
       <div class="flex column items-center">
         <span class="text-bold text-primary">{{ drink?.name }}</span>
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { type IDrink } from "@/models";
+import { type IDrink } from "../models";
 import { uid } from "quasar";
 import DialogDetailsDrink from "./DialogDetailsDrink.vue";
 export default {
