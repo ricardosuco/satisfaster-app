@@ -2,7 +2,7 @@
 
 ## Descrição 📄
 
-Satisfaster é um sistema em Nuxt que visa exibir uma lista de drinks, consumindo dados a partir da [Satisfeaster-api]().
+Satisfaster é um sistema em Nuxt que visa exibir uma lista de drinks, consumindo dados a partir da [Satisfeaster-api](https://github.com/ricardosuco/satisfaster-api).
 
 ## Funcionalidades ✨
 
@@ -34,7 +34,7 @@ Satisfaster é um sistema em Nuxt que visa exibir uma lista de drinks, consumind
 
 2. **Instale as Dependências:**
    ```bash
-   cd satisfaster
+   cd satisfaster-app
    npm install
    ```
 
