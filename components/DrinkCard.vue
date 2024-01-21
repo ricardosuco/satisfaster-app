@@ -1,7 +1,9 @@
 <template>
   <q-card class="drink-card border-radius" bordered flat>
-    <q-img v-if="drink.image" :src="drink.image" />
-    <img v-else src="/placeholderdrink.png" />
+    <q-card-section style="height: 66%">
+      <q-img v-if="drink.image" :src="drink.image" />
+      <q-img v-else src="/placeholderdrink.png" />
+    </q-card-section>
     <q-card-section class="flex column items-center">
       <div class="flex column items-center">
         <span class="text-bold text-primary">{{ drink?.name }}</span>
