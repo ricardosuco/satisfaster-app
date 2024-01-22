@@ -1,12 +1,12 @@
 <template>
-  <q-card class="text-justify">
+  <q-card class="text-justify" style="width: 350px">
     <q-btn icon="close" color="black" flat round v-close-popup style="z-index: 999; top: 3px; right: 3px; opacity: 0.5;" class="absolute-top-right bg-teal-3" />
     <div class="q-pa-md">
-      <q-img :src="drink?.image" width="350px" />
+      <q-img :src="drink?.image"/>
 
       <div class="text-white text-weight-bold flex items-center column"></div>
 
-      <q-card-section style="max-width: 350px">
+      <q-card-section>
         <div class="flex column items-center">
           <span class="text-h5 text-bold text-primary">{{ drink?.name }}</span>
           <span class="text-bold">{{ drink?.category }}</span>
