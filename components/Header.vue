@@ -12,7 +12,7 @@
           class="bg-white"
           color="primary"
           @keydown.enter="$emit('search', filter)"
-          v-model="filter.name"
+          v-model.trim="filter.name"
           placeholder="Busque por um drink"
           debounce="50"
           clearable
