@@ -62,7 +62,7 @@ export default defineNuxtComponent({
         if (this.filter?.name) query.name = this.filter.name;
         if (this.filter?.category) query.category = this.filter.category;
         const { data, error } = await useFetchDrinks(
-          `/drinks${this.page}&rowsPerPage=50`,
+          `/drinks${this.page}&rowsPerPage=25`,
           { query }
         );
         this.drinks.push(...toRaw(data.value.data));
@@ -91,6 +91,7 @@ export default defineNuxtComponent({
 
     async onLoad(index: number, done: () => void) {
       if (this.drinks.length === this.pagination.total) return done();
+      if (this.noDrinks) return
       await this.fetchData();
       done();
     },
