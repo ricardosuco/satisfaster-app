@@ -9,7 +9,7 @@ describe('Index component', () => {
         name: 'Coca Cola',
         instructions: 'Mix it all together',
         image: 'https://www.thecocktaildb.com/images/media/drink/qyyvtu1468878544.jpg',
-        category: 'Ordinary Drink',
+        category: 'Ordinary Drink'
     }
     const indexMount = (options?: any) => {
         const wrapper = mount(index, {
@@ -26,29 +26,28 @@ describe('Index component', () => {
     it('Should component to be defined', async () => {
         const wrapper = indexMount()
         expect(wrapper.vm).toBeDefined()
-
     })
 
-    it('Should show 5x DrinkCard', async () => {      
+    it('Should show 5x DrinkCard', async () => {
         const drinks = []
         for (let i = 0; i < 5; i++) {
-            drinks.push({...drink, id: i})
+            drinks.push({ ...drink, id: i })
         }
-        const wrapper = indexMount({props: {drinks}})
-        const cards = wrapper.findAllComponents({name: 'DrinkCard'})
+        const wrapper = indexMount({ props: { drinks } })
+        const cards = wrapper.findAllComponents({ name: 'DrinkCard' })
 
         expect(cards.length).toBe(5)
     })
 
     it('Should not show DrinkCard when no drinks are passed', async () => {
         const wrapper = indexMount()
-        const cards = wrapper.findAllComponents({name: 'DrinkCard'})
+        const cards = wrapper.findAllComponents({ name: 'DrinkCard' })
 
         expect(cards.length).toBe(0)
     })
 
-    it('Should show "Nenhum drink encontrado" when no drinks are passed', async () => {      
-        const wrapper = indexMount({props: {drinks: [], noDrinks: true}})
+    it('Should show "Nenhum drink encontrado" when no drinks are passed', async () => {
+        const wrapper = indexMount({ props: { drinks: [], noDrinks: true } })
         const foundEl = wrapper.find('[data-testid="no-drinks"]')
         console.log(foundEl.text())
         expect(foundEl.text()).toContain('Nenhum drink encontrado')

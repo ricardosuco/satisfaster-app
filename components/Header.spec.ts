@@ -8,7 +8,7 @@ describe('Header component', () => {
         const wrapper = mount(Header, {
             global: {
                 plugins: [Quasar]
-            },
+            }
         })
         return wrapper
     }

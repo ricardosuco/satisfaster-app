@@ -8,7 +8,7 @@ describe('Footer component', () => {
         const wrapper = mount(Footer, {
             global: {
                 plugins: [Quasar]
-            },
+            }
         })
         return wrapper
     }

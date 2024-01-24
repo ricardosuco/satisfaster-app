@@ -1,16 +1,16 @@
 <template>
-  <div class="container">
-    <slot />
-  </div>
+    <div class="container">
+        <slot />
+    </div>
 </template>
 
 <script lang="ts">
-export default {};
+export default {}
 </script>
 
 <style scoped>
 .container {
-  margin: 0 auto;
-  max-width: 1070px;
+    margin: 0 auto;
+    max-width: 1070px;
 }
 </style>
