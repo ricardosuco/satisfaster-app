@@ -8,16 +8,14 @@
         </div>
         <q-infinite-scroll @load="onLoad" :offset="250">
           <NuxtPage :drinks="drinks" :noDrinks="noDrinks" />
-          <template v-slot:loading>
-            <div class="row justify-center q-my-md">
-              <q-spinner-dots
-                v-show="showSpinner"
-                color="primary"
-                size="40px"
-              />
-            </div>
-          </template>
         </q-infinite-scroll>
+        <div class="row justify-center q-my-md">
+          <q-spinner-dots
+            v-show="showSpinner"
+            color="primary"
+            size="40px"
+          />
+        </div>
       </Container>
       <Footer />
     </div>
