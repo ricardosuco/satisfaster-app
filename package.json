@@ -1,35 +1,38 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "test": "vitest",
-    "test:watch": "vitest --watchAll",
-    "test:coverage": "vitest run --coverage",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxt/test-utils": "^3.9.0",
-    "@quasar/vite-plugin": "^1.6.0",
-    "@vitejs/plugin-vue": "^5.0.0",
-    "@vue/test-utils": "^2.4.3",
-    "jest-environment-jsdom": "^29.7.0",
-    "jsdom": "^23.0.1",
-    "nuxt": "^3.9.0",
-    "nuxt-quasar-ui": "^2.0.7",
-    "vitest": "^1.1.0",
-    "vue": "^3.3.13",
-    "vue-router": "^4.2.5"
-  },
-  "dependencies": {
-    "@quasar/extras": "^1.16.9",
-    "quasar": "^2.14.2",
-    "sass": "^1.69.5",
-    "sass-loader": "^13.3.3"
-  }
+    "name": "satisfaster-app",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "test": "vitest",
+        "test:watch": "vitest --watchAll",
+        "test:coverage": "vitest run --coverage",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare",
+        "format": "prettier --write \"**/*.{js,ts,vue,json,md}\""
+    },
+    "devDependencies": {
+        "@nuxt/devtools": "latest",
+        "@nuxt/test-utils": "^3.9.0",
+        "@quasar/vite-plugin": "^1.6.0",
+        "@vitejs/plugin-vue": "^5.0.0",
+        "@vue/test-utils": "^2.4.3",
+        "jest-environment-jsdom": "^29.7.0",
+        "jsdom": "^23.0.1",
+        "nuxt": "^3.9.0",
+        "nuxt-quasar-ui": "^2.0.7",
+        "vitest": "^1.1.0",
+        "vue": "^3.3.13",
+        "vue-router": "^4.2.5"
+    },
+    "dependencies": {
+        "@quasar/extras": "^1.16.9",
+        "prettier": "^3.2.4",
+        "quasar": "^2.14.2",
+        "sass": "^1.69.5",
+        "sass-loader": "^13.3.3"
+    }
 }

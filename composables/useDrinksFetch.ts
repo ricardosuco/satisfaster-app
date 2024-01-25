@@ -1,4 +1,4 @@
-import { useFetch } from "nuxt/app";
+import { useFetch } from 'nuxt/app'
 
 // export const useDrinksFetch = async () => {
 //   const { data, error } = await useFetch(
@@ -12,10 +12,10 @@ import { useFetch } from "nuxt/app";
 //   };
 // };
 
-type useFetchType = typeof useFetch;
+type useFetchType = typeof useFetch
 
 export const useFetchDrinks: useFetchType = (request, opts = {}) => {
-  const config = useRuntimeConfig();
+    const config = useRuntimeConfig()
 
-  return useFetch(request, { baseURL: config.public.baseURL, ...opts });
-};
+    return useFetch(request, { baseURL: config.public.baseURL, ...opts })
+}
