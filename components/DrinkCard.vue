@@ -11,8 +11,8 @@
         </q-card-section>
         <q-separator />
         <q-card-actions align="right">
-            <q-btn @click="showDrink(drink)" class="text-bold" label="Visualizar detalhes" text-color="accent" no-caps flat />
-            <q-btn @click="handleFavorite(drink)" :icon="isFavorite(drink?.id) ? 'favorite' : 'favorite_outline'" color="secondary" round flat>
+            <q-btn data-testid="show-drink-btn" @click="showDrink(drink)" class="text-bold" label="Visualizar detalhes" text-color="accent" no-caps flat />
+            <q-btn data-testid="favorite-btn" @click="handleFavorite(drink)" :icon="isFavorite(drink?.id) ? 'favorite' : 'favorite_outline'" color="secondary" round flat>
                 <q-tooltip>{{ isFavorite(drink?.id) ? 'Remover dos favoritos' : 'Adicionar aos favoritos' }}</q-tooltip>
             </q-btn>
         </q-card-actions>

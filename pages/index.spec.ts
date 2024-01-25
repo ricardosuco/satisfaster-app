@@ -49,7 +49,6 @@ describe('Index component', () => {
     it('Should show "Nenhum drink encontrado" when no drinks are passed', async () => {
         const wrapper = indexMount({ props: { drinks: [], noDrinks: true } })
         const foundEl = wrapper.find('[data-testid="no-drinks"]')
-        console.log(foundEl.text())
         expect(foundEl.text()).toContain('Nenhum drink encontrado')
     })
 })

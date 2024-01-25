@@ -5,17 +5,17 @@
         </div>
         <div class="row q-col-gutter-md flex items-center col-xs-12 col-md-4">
             <div class="col-xs-11 col-md-10">
-                <q-input class="bg-white" color="primary" @keydown.enter="$emit('search', filter)" v-model.trim="filter.name" placeholder="Busque por um drink" debounce="50" clearable dense square outlined>
+                <q-input data-testid="search-input" class="bg-white" color="primary" @keydown.enter="$emit('search', filter)" v-model.trim="filter.name" placeholder="Busque por um drink" debounce="50" clearable dense square outlined>
                     <template v-slot:append>
-                        <q-btn @click="$emit('search', filter)" icon="search" flat />
+                        <q-btn data-testid="search-btn" @click="$emit('search', filter)" icon="search" flat />
                     </template>
                 </q-input>
             </div>
-            <div class="col-xs-1 col-md-5" v-if="$q.screen.lt.md">
-                <q-btn-dropdown color="white" dropdown-icon="menu" size="18px" outline>
+            <div v-if="$q.screen.lt.md" class="col-xs-1 col-md-5">
+                <q-btn-dropdown data-testid="dropdown-btn" color="white" dropdown-icon="menu" size="18px" outline>
                     <q-tooltip>Categorias</q-tooltip>
                     <q-list>
-                        <q-item v-for="(category, index) in categories" :key="index" @click="$emit('search', { ...filter, category })" clickable v-close-popup>
+                        <q-item data-testid="item-btn" v-for="(category, index) in categories" :key="index" @click="$emit('search', { ...filter, category })" clickable v-close-popup>
                             <q-item-section>
                                 <q-item-label>{{ category }}</q-item-label>
                             </q-item-section>
@@ -25,9 +25,9 @@
             </div>
         </div>
         <div v-if="$q.screen.gt.sm" class="col-xs-12 col-md-auto">
-            <q-btn-dropdown class="text-bold" label="Categorias" color="secondary" unlevated no-caps>
+            <q-btn-dropdown data-testid="dropdown-btn" class="text-bold" label="Categorias" color="secondary" unlevated no-caps>
                 <q-list>
-                    <q-item v-for="(category, index) in categories" :key="index" @click="$emit('search', { ...filter, category })" clickable v-close-popup>
+                    <q-item data-testid="item-btn" v-for="(category, index) in categories" :key="index" @click="$emit('search', { ...filter, category })" clickable v-close-popup>
                         <q-item-section>
                             <q-item-label>{{ category }}</q-item-label>
                         </q-item-section>
