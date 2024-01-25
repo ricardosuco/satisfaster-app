@@ -3,7 +3,9 @@
         <div class="col-xs-12">
             <q-separator />
         </div>
-        <div class="col-xs-12">Footer</div>
+        <div class="col-xs-12 flex justify-center">
+            <span class="text-caption q-my-sm text-primary"> Developed by <a style="text-decoration: none" href="https://www.linkedin.com/in/avelinodev/" target="_blank">avelinodev</a></span>
+        </div>
     </div>
 </template>
 
