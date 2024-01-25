@@ -13,5 +13,14 @@ export default defineNuxtConfig({
             baseURL: process.env.BASE_URL
         }
     },
-    ssr: false
+    ssr: false,
+    app: {
+        head:{
+            title: 'Satisfaster',
+            meta: [
+                { charset: 'utf-8' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+            ]
+        }
+    },
 })
